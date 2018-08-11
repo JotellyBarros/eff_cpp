@@ -5,7 +5,7 @@
 struct car
 {
     int model;
-    int color;
+    int color_master_should_stay;
     void getFipTableValue()
     {
         std::cout << "FIP VALUE\n";
