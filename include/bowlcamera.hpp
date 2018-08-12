@@ -11,8 +11,22 @@
 #ifndef EFF_CPP_INCLUDE_TEST_H
 #define EFF_CPP_INCLUDE_TEST_H
 
+#include<opencv2/highgui.hpp>
+
 namespace eff_cpp
 {
+
+enum BowlEncoding
+{
+    mono8,
+    rgb8,
+    bgr8,
+    bayer_rg8,
+    bayer_gr8,
+    bayer_bg8,
+    yuv_422
+};
+
 class BowlCamera
 {
   public:
@@ -37,6 +51,11 @@ class BowlCamera
      * @return nothing.
      */
     BowlCamera(const BowlCamera& obj);
+
+    typedef void (*CallBackPtr)(cv::Mat);
+
+    bool cameraSetup(int width, int height, BowlEncoding encoding, CallBackPtr fcnt_ptr);
+
 
   private:
 

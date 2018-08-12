@@ -20,6 +20,9 @@ namespace eff_cpp
         buffer_ptr_ =obj.buffer_ptr_;
     }
 
-    BowlCamera::
+    bool BowlCamera::cameraSetup(int width, int height, BowlEncoding encoding, CallBackPtr fcnt_ptr)
+    {
+
+    }
 
 }
