@@ -20,9 +20,17 @@ namespace eff_cpp
         buffer_ptr_ =obj.buffer_ptr_;
     }
 
-    bool BowlCamera::cameraSetup(int width, int height, BowlEncoding encoding, CallBackPtr fcnt_ptr)
+    bool BowlCamera::cameraSetup(int width, int height, BowlEncoding encoding)//, CallBackPtr fcnt_ptr)
     {
-
+        switch(encoding)
+        {
+            case mono8:
+                std::cout << "We get the Mono8\n";
+                break;
+            case rgb8:
+                std::cout << "We get the RGB8\n";
+                break;
+        }
     }
 
 }

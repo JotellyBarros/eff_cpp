@@ -12,26 +12,15 @@ struct car
     }
 };
 
-int& sum(int& x, int& y, const char* string)
+bool getImage(cv::Mat frame)
 {
-    std::cout << string << std::endl;
-    static int c = x+y;
-    x = c;
-    y = c -1;
-    return c;
+    std::cout << "Frame got\n";
+    return true;
 }
 
 int main()
 {
-    std::cout << "Hello Moto!" << std::endl;
-    const char *string = "Isso eh uma string ou um ponteiro?";
+    eff_cpp::BowlCamera camera;
 
-    car gol;
-
-    int x = 2, y = 3;
-    auto val = sum(x,y,string);
-    sum(x,y,string);
-    sum(x,y,string);
-    gol.getFipTableValue();
-    return 0;
+    camera.cameraSetup(460,360,eff_cpp::BowlEncoding::rgb8);
 }

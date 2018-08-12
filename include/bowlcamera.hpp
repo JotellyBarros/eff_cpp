@@ -11,7 +11,9 @@
 #ifndef EFF_CPP_INCLUDE_TEST_H
 #define EFF_CPP_INCLUDE_TEST_H
 
-#include<opencv2/highgui.hpp>
+#include <iostream>
+#include <opencv2/highgui.hpp>
+
 
 namespace eff_cpp
 {
@@ -52,9 +54,20 @@ class BowlCamera
      */
     BowlCamera(const BowlCamera& obj);
 
+    /**
+     * \typedef Typedef to a callback function pointer.
+     */
     typedef void (*CallBackPtr)(cv::Mat);
 
-    bool cameraSetup(int width, int height, BowlEncoding encoding, CallBackPtr fcnt_ptr);
+    /**
+     * @brief Setups the camera regular parameters.
+     * @param width Image width.
+     * @param height Image height.
+     * @param encoding Image encoding.
+     * @param fcnt_ptr Pointer to a function to receive the acquired images.
+     * @return bool.0
+     */
+    bool cameraSetup(int width, int height, BowlEncoding encoding);//, CallBackPtr fcnt_ptr);
 
 
   private:
