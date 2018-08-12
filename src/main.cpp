@@ -1,5 +1,5 @@
 #include <iostream>
-#include <test.h>
+#include <bowlcamera.hpp>
 #include <opencv2/highgui.hpp>
 
 struct car
@@ -33,6 +33,5 @@ int main()
     sum(x,y,string);
     sum(x,y,string);
     gol.getFipTableValue();
-    std::cout << gol.color << std::endl;
     return 0;
 }

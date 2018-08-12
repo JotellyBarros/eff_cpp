@@ -12,4 +12,4 @@ find_package(OpenCV 4 REQUIRED)
 
 file(GLOB_RECURSE HEADERS "include/*.h*")
 
-add_executable(${PROJECT_NAME} "src/main.cpp" "src/test.cpp" ${HEADERS})
+add_executable(${PROJECT_NAME} "src/main.cpp" "src/bowlcamera.cpp" ${HEADERS})
