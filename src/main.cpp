@@ -14,13 +14,13 @@ struct car
 
 bool getImage(cv::Mat frame)
 {
-    std::cout << "Frame got\n";
+    cv::imshow("Test", frame);
+    int key = cv::waitKey(1);
     return true;
 }
 
 int main()
 {
     eff_cpp::BowlCamera camera;
-
-    camera.cameraSetup(460,360,eff_cpp::BowlEncoding::rgb8);
+    camera.cameraSetup(460,360,eff_cpp::BowlEncoding::rgb8, getImage);
 }

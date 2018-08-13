@@ -13,6 +13,8 @@
 
 #include <iostream>
 #include <opencv2/highgui.hpp>
+#include "opencv2/opencv.hpp"
+#include "opencv2/videoio.hpp"
 
 
 namespace eff_cpp
@@ -57,7 +59,7 @@ class BowlCamera
     /**
      * \typedef Typedef to a callback function pointer.
      */
-    typedef void (*CallBackPtr)(cv::Mat);
+    typedef bool (*CallBackPtr)(cv::Mat);
 
     /**
      * @brief Setups the camera regular parameters.
@@ -67,7 +69,7 @@ class BowlCamera
      * @param fcnt_ptr Pointer to a function to receive the acquired images.
      * @return bool.0
      */
-    bool cameraSetup(int width, int height, BowlEncoding encoding);//, CallBackPtr fcnt_ptr);
+    bool cameraSetup(int width, int height, BowlEncoding encoding, CallBackPtr fcnt_ptr);
 
 
   private:
