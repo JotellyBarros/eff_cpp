@@ -70,14 +70,14 @@ class BowlCamera
      * @param fcnt_ptr Pointer to a function to receive the acquired images.
      * @return bool.0
      */
-    bool cameraSetup(int width, int height, BowlEncoding encoding, CallBackPtr fcnt_ptr, void *obj_ptr);
+    bool cameraSetup(int width, int height, BowlEncoding encoding,
+                     CallBackPtr fcnt_ptr, void *obj_ptr);
 
     static void frameThread(void* params);
 
   private:
 
      int *buffer_ptr_;
-     int x;
      std::thread *callback_thread;
      CallBackPtr grab_param_;
 
