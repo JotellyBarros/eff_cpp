@@ -16,6 +16,7 @@
 #include "opencv2/opencv.hpp"
 #include "opencv2/videoio.hpp"
 #include <thread>
+#include <exception>
 
 
 namespace eff_cpp
@@ -30,6 +31,22 @@ enum BowlEncoding
     bayer_gr8,
     bayer_bg8,
     yuv_422
+};
+
+class Exception : public std::exception
+{
+  public:
+    Exception(std::string msg) :msg_(msg){
+      std::cout << "Here ..." <<std::endl;
+    }
+    virtual ~Exception(){}
+    const char* what() const throw()
+    {
+        std::cout << "Here2 ..." <<std::endl;
+        return msg_.c_str();
+    }
+  protected:
+    std::string msg_;
 };
 
 class BowlCamera
@@ -73,7 +90,7 @@ class BowlCamera
     bool cameraSetup(int width, int height, BowlEncoding encoding,
                      CallBackPtr fcnt_ptr, void *obj_ptr);
 
-    static void frameThread(void* params);
+    static void frameThread(void* params) throw(eff_cpp::Exception);
 
   private:
 
