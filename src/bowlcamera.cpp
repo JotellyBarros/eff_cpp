@@ -5,7 +5,7 @@ namespace eff_cpp
 BowlCamera::BowlCamera()
     : buffer_ptr_(nullptr)
     , grab_param_(nullptr)
-    , callback_thread(nullptr)
+    , callback_thread_(nullptr)
 {
 }
 
@@ -16,7 +16,7 @@ BowlCamera::~BowlCamera()
 
 BowlCamera::BowlCamera(const BowlCamera &obj)
     : buffer_ptr_ (obj.buffer_ptr_)
-    , callback_thread (obj.callback_thread)
+    , callback_thread_ (obj.callback_thread_)
 {
 }
 
@@ -35,10 +35,10 @@ bool BowlCamera::cameraSetup(int width, int height, BowlEncoding encoding,
 
     grab_param_ = fcnt_ptr;
 
-    callback_thread = new std::thread(frameThread, this);
+    callback_thread_ = new std::thread(frameThread, this);
 }
 
-void BowlCamera::frameThread(void* params) throw(eff_cpp::Exception)
+void BowlCamera::frameThread(void* params) throw()
 {
     std::cout << "Teste" << std::endl;
 
@@ -46,7 +46,7 @@ void BowlCamera::frameThread(void* params) throw(eff_cpp::Exception)
 
     cv::VideoCapture video(0);
 
-    if ( video.isOpened() )
+    if ( !video.isOpened() )
     {
         throw eff_cpp::Exception(std::string("OpenCV problem, camera may be not opened."));
     }
@@ -58,6 +58,14 @@ void BowlCamera::frameThread(void* params) throw(eff_cpp::Exception)
         video >> frame;
 
         pThis->grab_param_(frame);
+    }
+}
+
+void BowlCamera::waitingStopStreaming()
+{   
+    if (callback_thread_ != nullptr)
+    {
+        callback_thread_->join();
     }
 }
 
