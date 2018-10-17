@@ -5,7 +5,7 @@ project(eff_cpp)
 set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} "-std=c++11 -pthread -w")
 
 #Adds the OpenCV 4 component
-find_package(OpenCV 4 REQUIRED)
+find_package(OpenCV 3 REQUIRED)
 
 INCLUDE_DIRECTORIES(
     include

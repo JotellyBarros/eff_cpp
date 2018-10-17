@@ -6,22 +6,22 @@
 #include <unistd.h>
 
 
-class Applicaiton
+class Application
 {
   public:
     /**
-     * @brief Applicaiton
+     * @brief Application
      */
-    explicit Applicaiton();
+    explicit Application();
     /**
-     * @brief ~Applicaiton
+     * @brief ~Application
      */
-    virtual ~Applicaiton();
+    virtual ~Application();
     /**
-     * @brief Applicaiton
+     * @brief Application
      * @param obj
      */
-    Applicaiton(const Applicaiton& obj);
+    Application(const Application& obj);
     /**
      * @brief imageCallback
      * @param frame

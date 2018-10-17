@@ -3,6 +3,6 @@
 
 int main()
 {
-    Applicaiton sys_app;
+    Application sys_app;
     return 0;
 }

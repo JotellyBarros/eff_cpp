@@ -38,7 +38,7 @@ bool BowlCamera::cameraSetup(int width, int height, BowlEncoding encoding,
     callback_thread = new std::thread(frameThread, this);
 }
 
-void BowlCamera::frameThread(void* params)
+void BowlCamera::frameThread(void* params) throw(eff_cpp::Exception)
 {
     std::cout << "Teste" << std::endl;
 
@@ -46,9 +46,9 @@ void BowlCamera::frameThread(void* params)
 
     cv::VideoCapture video(0);
 
-    if ( !video.isOpened() )
+    if ( video.isOpened() )
     {
-        return;
+        throw eff_cpp::Exception(std::string("OpenCV problem, camera may be not opened."));
     }
 
     while(true)

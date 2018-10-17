@@ -1,24 +1,31 @@
 #include <application.hpp>
 
 
-Applicaiton::Applicaiton()
+Application::Application()
 {
-    camera_.cameraSetup(460,360, eff_cpp::BowlEncoding::rgb8, Applicaiton::imageCallback, (void*) this);
-    sleep(10);
+    try
+    {
+        camera_.cameraSetup(460,360, eff_cpp::BowlEncoding::rgb8, Application::imageCallback, (void*) this);
+        sleep(10);
+    }
+    catch(std::exception& e)
+    {
+        std::cerr << "Error: " << e->what() << std::endl;
+    }
 }
 
-Applicaiton::~Applicaiton()
+Application::~Application()
 {
 
 }
 
 
-Applicaiton::Applicaiton(const Applicaiton& obj)
+Application::Application(const Application& obj)
 {
 
 }
 
-void Applicaiton::imageCallback(cv::Mat& frame)
+void Application::imageCallback(cv::Mat& frame)
 {
     cv::imshow("Test", frame);
     int key = cv::waitKey(1);
