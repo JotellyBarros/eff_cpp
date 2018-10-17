@@ -89,13 +89,13 @@ class BowlCamera
      */
     bool cameraSetup(int width, int height, BowlEncoding encoding,
                      CallBackPtr fcnt_ptr, void *obj_ptr);
-
-    static void frameThread(void* params) throw(eff_cpp::Exception);
+    static void frameThread(void* params) throw();
+    void waitingStopStreaming();
 
   private:
 
      int *buffer_ptr_;
-     std::thread *callback_thread;
+     std::thread *callback_thread_;
      CallBackPtr grab_param_;
 
 

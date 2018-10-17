@@ -6,11 +6,11 @@ Application::Application()
     try
     {
         camera_.cameraSetup(460,360, eff_cpp::BowlEncoding::rgb8, Application::imageCallback, (void*) this);
-        sleep(10);
+        camera_.waitingStopStreaming();
     }
-    catch(std::exception& e)
+    catch(eff_cpp::Exception& e)
     {
-        std::cerr << "Error: " << e->what() << std::endl;
+        std::cerr << "Error: " << e.what() << std::endl;
     }
 }
 
